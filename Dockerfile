@@ -26,19 +26,17 @@ RUN apt-get update && apt-get install -y \
     && echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome-keyring.gpg] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list \
     && apt-get update \
     && apt-get install -y google-chrome-stable \
-    # --- END: Added commands to install Google Chrome ---
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
-
-# --- START: ADD THIS SECTION TO INSTALL CHROMEDRIVER ---
-RUN CHROME_VERSION=$(google-chrome-stable --version | awk '{print $3}' | cut -d'.' -f1-3) && \
+    && CHROME_VERSION=$(google-chrome-stable --version | awk '{print $3}' | cut -d'.' -f1-3) && \
     CHROMEDRIVER_VERSION=$(curl -s "https://googlechromelabs.github.io/chrome-for-testing/latest-patch-versions-per-build.json" | jq -r ".builds[\"$CHROME_VERSION\"].version") && \
     wget "https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/$CHROMEDRIVER_VERSION/linux64/chromedriver-linux64.zip" -O chromedriver.zip && \
     unzip chromedriver.zip && \
     mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver && \
     chmod +x /usr/local/bin/chromedriver && \
-    rm chromedriver.zip chromedriver-linux64.zip && \
-    rm -r chromedriver-linux64
-# --- END OF ADDED SECTION ---
+    # --- FIXED a typo in the line below ---
+    rm chromedriver.zip && \
+    rm -r chromedriver-linux64 \
+    # --- END: Install Chromedriver ---
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # (Your apt-get clean command)
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
