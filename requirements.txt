@@ -1,0 +1,12 @@
+pyrotgfork==2.1.31
+pySmartDL
+tqdm
+TgCrypto
+pytz
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
+oauth2client
+pymongo[srv]
+bbpb
+requests
