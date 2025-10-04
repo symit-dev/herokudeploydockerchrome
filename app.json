@@ -1,0 +1,25 @@
+{
+    "name": "Heroku Docker Deploy Chrome",
+    "description": "Python Specfic things done here",
+    "logo": "https://telegra.ph/file/d8d194c18562472a7c1f1.jpg",
+    "keywords": [
+     "deployer",
+     "productivity"
+    ],
+    "repository": "https://github.com/symit-dev/herokudeploydockerchrome",
+    "website": "https://github.com/symit-dev/herokudeploydockerchrome/",
+    "success_url": "https://github.com/symit-dev/herokudeploydockerchrome/",
+    "stack": "container",
+    "env": {
+     "GIT_URL": {
+      "description": "Put Your URL FROM WHERE IT WILL GET CLONE ",
+      "value": "",
+      "required": true
+     },
+     "APP_CONFIG": {
+      "description": "Any Config you might want to add and access it in your app.",
+      "value": "",
+      "required": false
+     }
+    }
+  }
